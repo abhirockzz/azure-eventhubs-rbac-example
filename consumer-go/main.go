@@ -20,14 +20,11 @@ func main() {
 	if err != nil {
 		log.Fatal("failed to create EH client ", err)
 	}
-	fmt.Println("crwated EH client")
 
 	info, err := hub.GetRuntimeInformation(context.Background())
 	if err != nil {
 		log.Fatal("failed to get runtime info ", err)
 	}
-
-	fmt.Println("got runtime info")
 
 	for _, pid := range info.PartitionIDs {
 		_, err := hub.Receive(context.Background(), pid, func(ctx context.Context, event *eventhub.Event) error {
