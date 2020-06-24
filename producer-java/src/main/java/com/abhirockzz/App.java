@@ -21,9 +21,7 @@ public class App {
             System.out.println("adding event " + i);
             batch.tryAdd(new EventData("event-" + i));
         }
-            
         producer.send(batch);
         producer.close();
-
     }
 }
